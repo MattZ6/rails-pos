@@ -1,0 +1,46 @@
+<% if notice %>
+  <p id="notice" class="alert alert-success"><%= notice %></p>
+<% end %>
+
+<% if current_user.profile.is_admin %>
+  <strong class="text-muted">Administrador</strong>
+  <h1>Bem-vindo, <%= current_user.profile.name  %>.</h1>
+  <h6 class="text-muted">Exibindo listagem de compras administrativas</h6>
+<% else %>
+  <h1>Olá, <%= current_user.profile.name  %>!</h1>
+<h6 class="text-muted">Aqui estão todas as suas compras!</h6>
+<% end %>
+
+<br>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Description</th>
+      <th scope="col">Pago</th>
+      <th scope="col" colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody >
+    <% @pucharses.each do |pucharse| %>
+      <tr>
+        <td class="text-muted"><%= pucharse.id %></td>
+        <td ><%= pucharse.description %></td>
+        <% if pucharse.was_bought %>
+          <td><h4><span class="badge badge-success">Pago</span></h4></td>
+        <% else %>
+          <td><h4></h4></td>
+        <% end %>
+
+          <td><%= link_to 'Ver', pucharse, class: "btn btn-outline-info btn-block" %></td>
+          <td><%= link_to 'Editar', edit_pucharse_path(pucharse), class: "btn btn-block btn-outline-secondary" %></td>
+          <td><%= link_to 'X', pucharse, method: :delete, data: { confirm: 'Você tem certeza?' }, class: "btn btn-danger" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to '+ Compra', new_pucharse_path, class: "btn btn-success" %>

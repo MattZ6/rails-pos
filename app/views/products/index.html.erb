@@ -1,0 +1,36 @@
+<% if notice %>
+  <p id="notice" class="alert alert-success"><%= notice %></p>
+<% end %>
+
+<strong class="text-muted">Administrador</strong>
+<h1>Produtos</h1>
+<h6 class="text-muted">Aqui você encontra todos os produtos. Para adicionar um novo produto, clique em <strong>+ Produto</strong> na parte inferior da tela.</h6>
+
+<br>
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Nome/título</th>
+      <th>Preço</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td class="text-muted"><%= product.id %></td>
+        <td><%= product.name %></td>
+        <td>R$ <%= product.price %></td>
+        <td><%= link_to 'Ver', product, class: "btn btn-outline-info btn-block" %></td>
+        <td><%= link_to 'Editar', edit_product_path(product), class: "btn btn-outline-dark btn-block" %></td>
+        <td><%= link_to 'X', product, method: :delete, data: { confirm: 'Você tem certeza?' }, class: "btn btn-danger" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to '+ Produto', new_product_path, class: "btn btn-success" %>

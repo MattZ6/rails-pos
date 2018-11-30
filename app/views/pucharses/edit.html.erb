@@ -1,0 +1,20 @@
+<div class="profile-container">
+
+    <h1 class="text-center">Editar compra</h1>
+    <% if current_user.profile.is_admin %>
+        <h6 class="text-center text-muted">Toda e qualquer tipo de alteração na compra é feita aqui.</h6>
+    <% else %>
+        <h6 class="text-center text-muted">Pagar? Comprar mais?</h6>
+    <% end %>
+
+    <br>
+    <div class="card">
+        <div class="card-body">
+            <%= render 'form' %>
+
+            <br>
+            <%= link_to 'Ver', @pucharse,  class: "btn btn-block btn-outline-info"%>
+            <%= link_to 'Voltar', pucharses_path, class: "btn btn-block btn-light" %>
+        </div>
+    </div>
+</div>

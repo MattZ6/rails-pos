@@ -1,0 +1,19 @@
+<div class="profile-container">
+
+    <h1 class="text-center">Nova compra</h1>
+    <% if current_user.profile.is_admin %>
+        <h6 class="text-center text-muted">Aqui você pode adicionar uma compra à lista de compras.</h6>
+    <% else %>
+        <h6 class="text-center text-muted">Ótimo, vamos gastar!</h6>
+    <% end %>
+
+    <br>
+    <div class="card">
+        <div class="card-body">
+            <%= render 'form' %>
+
+            <br>
+            <%= link_to 'Voltar', pucharses_path, class: "btn btn-block btn-light" %>
+        </div>
+    </div>
+</div>

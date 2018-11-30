@@ -1,0 +1,22 @@
+<div class="profile-container">
+
+    <% if current_user.profile && current_user.profile.is_admin %>
+        <h1 class="text-center">Novo perfil</h1>
+        <h6 class="text-center text-muted">Aqui você pode criar um novo usuário e defini-lo com administrador.</h6>
+    <% else %>
+        <h1 class="text-center">Bem-vindo!</h1>
+        <h6 class="text-center text-muted">Para começar, vamos criar seu perfil.</h6>
+    <% end %>
+
+    <br>
+    <div class="card">
+        <div class="card-body">
+            <%= render 'form' %>
+
+            <br>
+            <% if current_user.profile %>
+                <%= link_to 'Voltar', pucharses_path, class: "btn btn-block btn-light" %>
+            <% end %>
+        </div>
+    </div>
+</div>

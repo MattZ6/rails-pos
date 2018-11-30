@@ -1,0 +1,27 @@
+<div class="profile-container">
+
+  <% if notice %>
+    <p id="notice" class="alert alert-success"><%= notice %></p>
+  <% end %>
+
+  <h1 class="text-center">Produto</h1>
+  <h6 class="text-center text-muted"><%= @product.name %>? Aqui está!</h6>
+
+  <br>
+  <div class="card">
+    <div class="card-body">
+
+      <div class="form-group">
+        <label><strong>Nome</strong></label><br>
+        <%= @product.name %>
+      </div>
+
+      <div class="form-group">
+        <label><strong>Preço</strong></label><br>
+        $ <%= @product.price %>
+      </div>
+
+      <%= link_to 'Editar', edit_product_path(@product), class: "btn btn-block btn-secondary" %> 
+      <%= link_to 'Voltar', products_path, class: "btn btn-light btn-block" %>
+    </div>
+</div>

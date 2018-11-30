@@ -1,0 +1,45 @@
+<div class="profile-container">
+
+  <% if notice %>
+    <p id="notice" class="alert alert-success"><%= notice %></p>
+  <% end %>
+  
+  <h1 class="text-center">Compra</h1>
+  <h6 class="text-center text-muted">Aqui estão todos os detalhes da <strong>compra #<%=@pucharse.id %></strong>. </h6>
+
+  <br>
+  <div class="card">
+    <div class="card-body">
+      <div class="form-group">
+        <label><strong>Descrição</strong></label><br>
+        <%= @pucharse.description %>
+      </div>
+
+      <div class="form-group">
+        <label class="text-center"><strong>Produtos</strong></label><br>
+        <div class="card">
+          <% @pucharse.product_pucharses.each do |product_pucharse| %>
+            <table class="table table-sm table-borderless">
+              <tbody>
+                <tr>
+                  <td><%= product_pucharse.product.name %></td>
+                  <td class="col-1"><h5><span class="badge pill-badge badge-success">R$ <%= product_pucharse.product.price %></span></h5></td>
+                </tr>
+              </tbody>
+            </table>
+          <%end%>
+        </div>
+      </div>
+
+      <% if @pucharse.was_bought %>
+        <h3 class="text-center"><span class="badge pill-badge badge-success">Já foi paga</span></h3>
+      <% else %>
+        <h3 class="text-center"><span class="badge pill-badge badge-warning">Ainda não foi paga</span></h3>
+      <% end %>
+
+      <br>
+      <%= link_to 'Editar', edit_pucharse_path(@pucharse), class: "btn btn-block btn-secondary" %>
+      <%= link_to 'Voltar', pucharses_path, class: "btn btn-block btn-light" %>
+    <div>
+  <div>
+</div>

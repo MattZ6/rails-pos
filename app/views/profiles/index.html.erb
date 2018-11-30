@@ -1,0 +1,38 @@
+<% if notice %>
+  <p id="notice" class="alert alert-success"><%= notice %></p>
+<% end %>
+
+<strong class="text-muted">Administrador</strong>
+<h1>Usuários</h1>
+<h6 class="text-muted">Aqui você está a lista de todos os usuários da aplicação.</h6>
+
+<br>
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Nome</th>
+      <th>Idade</th>
+      <th>Acesso</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @profiles.each do |profile| %>
+      <tr>
+        <td class="text-muted"><%= profile.id %></td>
+        <td><%= profile.name %></td>
+        <td><%= profile.age %> anos</td>
+        <td>
+          <% if profile.is_admin %>
+            <h5><span class="badge badge-dark">Administrador</span></h5>
+          <% end %>
+        </td>
+        <td><%= link_to 'Ver', profile, class: "btn btn-block btn-outline-info" %></td>
+        <td><%= link_to 'Editar', edit_profile_path(profile), class: "btn btn-block btn-outline-secondary" %></td>
+        <td><%= link_to 'X', profile, method: :delete, data: { confirm: 'Você tem certeza?' }, class: "btn  btn-danger" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
