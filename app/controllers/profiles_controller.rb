@@ -29,9 +29,9 @@ class ProfilesController < ApplicationController
     respond_to do |format|
       if @profile.save
           if current_user.profile.is_admin
-            format.html { redirect_to pucharses_path, notice: 'Perfil criado com sucesso.' }
-          else
             format.html { redirect_to profiles_url, notice: 'Perfil criado com sucesso.' }
+          else
+            format.html { redirect_to pucharses_path, notice: 'Perfil criado com sucesso.' }
           end
         format.json { render :show, status: :created, location: @profile }
       else
@@ -60,7 +60,11 @@ class ProfilesController < ApplicationController
   def destroy
     @profile.destroy
     respond_to do |format|
-      format.html { redirect_to profiles_url, notice: 'Usuário excluído com sucesso.' }
+      if current_user.profile 
+        format.html { redirect_to profiles_url, notice: 'Usuário excluído com sucesso.' }
+      else
+        format.html { redirect_to pucharses_path, notice: 'Usuário excluído com sucesso.' }
+      end
       format.json { head :no_content }
     end
   end
