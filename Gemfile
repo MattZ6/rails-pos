@@ -14,7 +14,7 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 gem 'mini_racer', platforms: :ruby
 # Used to authentication
-gem 'devise', '~> 4.5'
+gem 'devise', '~> 4.7'
 # Framework front-end to make all the things moe beautiful
 gem 'bootstrap', '~> 4.1.3'
 # Used to authorization
