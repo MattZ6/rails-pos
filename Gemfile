@@ -16,7 +16,7 @@ gem 'mini_racer', platforms: :ruby
 # Used to authentication
 gem 'devise', '~> 4.7'
 # Framework front-end to make all the things moe beautiful
-gem 'bootstrap', '~> 4.1.3'
+gem 'bootstrap', '~> 4.3.1'
 # Used to authorization
 # gem 'cancancan', '~> 2.3'
 # Use jquery as the JavaScript library
